@@ -1,4 +1,3 @@
-
 /* ================= GENERAL ================= */
 
 * {
@@ -276,12 +275,23 @@ header {
     max-width: 1100px;
     margin: auto;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 25px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    padding: 10px 5px 20px;
+
+    scrollbar-width: thin;
 }
 
 .skill-card {
+    min-width: 320px;
+    flex: 0 0 320px;
+
     background: white;
     padding: 25px;
     border-radius: 10px;
@@ -321,18 +331,73 @@ header {
 }
 
 
+/* ================= SLIDER BUTTONS ================= */
+
+.slider-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.slider-buttons button {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #6c63ff;
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.slider-buttons button:hover {
+    background: #554dcc;
+    transform: translateY(-3px);
+}
+
+
 /* ================= PROJECTS ================= */
 
-.projects-container {
+.projects-section {
+    overflow: hidden;
+}
+
+
+/*
+   Horizontal project slider
+*/
+
+.projects-slider {
     max-width: 1100px;
     margin: auto;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     gap: 30px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    padding: 10px 5px 25px;
+
+    scrollbar-width: thin;
 }
 
+
+/*
+   Project cards remain the same style.
+*/
+
 .project-card {
+    min-width: 520px;
+    flex: 0 0 520px;
+
     background: white;
     border-radius: 12px;
     overflow: hidden;
@@ -382,6 +447,10 @@ header {
 
 .project-btn:hover {
     background: #554dcc;
+}
+
+.project-slider-buttons {
+    margin-top: 20px;
 }
 
 
@@ -449,8 +518,13 @@ header {
     border-radius: 50%;
 }
 
-.input-group {
+.form-group {
     margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
 }
 
 input,
@@ -526,6 +600,7 @@ footer {
     100% {
         transform: translateY(0);
     }
+
 }
 
 
@@ -548,13 +623,20 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .skills-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .contact-container {
         grid-template-columns: 1fr;
     }
+
+    /*
+       Projects remain horizontal
+       on tablet.
+    */
+
+    .project-card {
+        min-width: 450px;
+        flex: 0 0 450px;
+    }
+
 }
 
 
@@ -565,6 +647,7 @@ footer {
     }
 
     .nav-links {
+
         position: absolute;
 
         top: 70px;
@@ -580,6 +663,7 @@ footer {
         background: white;
 
         transition: 0.3s;
+
     }
 
     .nav-links.active {
@@ -600,13 +684,26 @@ footer {
         font-size: 80px;
     }
 
-    .skills-container {
-        grid-template-columns: 1fr;
+
+    /*
+       Skills horizontal slider
+    */
+
+    .skill-card {
+        min-width: 280px;
+        flex: 0 0 280px;
     }
 
-    .projects-container {
-        grid-template-columns: 1fr;
+
+    /*
+       Projects horizontal slider
+    */
+
+    .project-card {
+        min-width: 300px;
+        flex: 0 0 300px;
     }
+
 
     .section {
         padding: 70px 5%;
@@ -615,6 +712,7 @@ footer {
     .section-title {
         font-size: 32px;
     }
+
 }
 
 
@@ -639,5 +737,5 @@ footer {
     .project-btn {
         text-align: center;
     }
-}
 
+}
